@@ -1,38 +1,38 @@
+// Aviso, pede para fazer a verificação por trecho;
+#include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
-
-struct no {
+struct no
+{
     int conteudo;
-    struct no *proximo;
+    struct  no *proximo;
 };
 typedef struct no No;
 
-void inserir(int x, No *ini){
-    No *novo = malloc(sizeof(No));
-    novo->conteudo = x;
-    novo->proximo = ini->proximo;
-    ini->proximo = novo;
-}
+//passagem de parametro por valor -> faz uma cópia do parametro
+//passagem do valor por referência -> utiliza-se ponteiros
 
+//assinatura do método
+//Inserir só um elemento
+void inserir(int x, No * ini){
+    No *novo;
+    novo = malloc(sizeof(No));
+    novo -> conteudo = x;
+    //novo -> proximo = NULL; -> esta parte só faz a inserção de só um elemento
+    novo -> proximo = ini -> proximo; //aqui funciona tanto para primeiro em diante;
+    ini -> proximo = novo;
+    //encadeiar é próximo campo
+}
 void exibir(No *ini){
+    //No *p = NULL; //ver porque tem que colocar null
     No *p;
-    for(p = ini->proximo; p != NULL; p = p->proximo){
-        printf("%d ", p->conteudo);
+    for(p = ini -> proximo; p != NULL; p = p -> proximo){ // ver a detalhe esse for
+        print("%d", p->conteudo);
     }
-    printf("\n");
 }
-
-int main(){
-    // Criando o nó cabeçalho
-    No *inicio = malloc(sizeof(No));
-    inicio->proximo = NULL;
-
+main(){
+    
+    // objetivo de guardar o endereço de inicio, porque precisamos o endereço do primeiro para percorrer a lista
     inserir(5, inicio);
     inserir(3, inicio);
-    inserir(8, inicio);
-
-    exibir(inicio); // Saída esperada: 8 3 5 (inserção no início)
-
-    free(inicio); // Lembre-se de liberar memória alocada
-    return 0;
+    exibir(inicio); // -> precisa do parametro de inicio para saber onde começa
 }
