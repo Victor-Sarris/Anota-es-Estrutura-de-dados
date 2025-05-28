@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct no{
-    int conteudo;
-    struct no *proximo;
-};
-typedef struct no No;
+struct no{ // aqui seria no caso a estrutura do no, pra começar o alocamento de memoria
+    int conteudo; //conteudo do no 
+    struct no *proximo; // o no aponta para o campo proximo, ou seja, o valor de no passa para o proximo no da estrutura
+}; 
+typedef struct no No; // aqui no caso eu estou dando uma aliase para o No (nome)
 
 //Faça um função que insira elementos em uma lista dinamica
 void inserirLista(No *inicio, int valor){
@@ -28,7 +28,7 @@ void imprimirLista(No *inicio){
     while(atual != NULL){
         printf("No endereco %p: %d;\n", (void*)atual, atual->conteudo);
         atual = atual->proximo;
-    }
+    } 
 }
 
 //Faça uma função que exclua o primeiro elemento de uma lista
