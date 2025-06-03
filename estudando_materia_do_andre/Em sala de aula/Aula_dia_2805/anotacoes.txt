@@ -1,3 +1,0 @@
-no caso, aqui vamos verificar como calcular o tamanho de uma arvore
-
-// metodo criar
